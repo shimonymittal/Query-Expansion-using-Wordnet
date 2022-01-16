@@ -1,0 +1,19 @@
+<input type='text' [(ngModel)]='query' />
+<input type="submit" name="search" value="Search !!" (click)="fetchQuery(query)" />
+<br><br>
+<div class="result">
+  <ul>
+    <li *ngFor='let data of result' style="padding-bottom: 10px;">
+      <span style="font-size: medium;"><b>{{data._source.title}}</b></span>
+      <br><br>
+      <div *ngFor='let content of data._source.content'>
+        <span>{{content}}</span>
+      </div>
+      <br>
+      <div *ngFor='let content of data.highlight.content'>
+        <span [innerHTML]="content"></span>
+      </div>
+      <br>
+    </li>
+  </ul>
+</div>
